@@ -1,0 +1,22 @@
+# vi: set et ts=2 sw=2 sts=0 :
+
+version: '2'
+
+services:
+  pingsrc:
+    image: debian
+    tty: true
+    command: sh -c 'cat /etc/hosts; echo; env; echo; ping pingdst'
+    networks:
+      pingnet:
+    links:
+      - pingdst
+  
+  pingdst:
+    image: debian
+    command: sleep infinity
+    networks:
+      pingnet:
+
+networks:
+  pingnet:

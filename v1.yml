@@ -1,0 +1,13 @@
+# vi: set et ts=2 sw=2 sts=0 :
+
+pingsrc:
+  image: debian
+  tty: true
+  command: sh -c 'cat /etc/hosts; echo; env; echo; ping pingdst'
+  links:
+    - pingdst
+
+pingdst:
+  image: debian
+  command: sleep infinity
+
